@@ -394,9 +394,11 @@ class CAstTransformer(object):
         name = enum.name
         return cw_ast.TypeName(cw_ast.Name(name, cw_ast.Param))
 
-    def translate_EnumValue(self, value):
-        name = value.name
-        return cw_ast.Expr(cw_ast.Name(name, cw_ast.Param))
+    def translate_EnumValue(self, enum):
+        name = enum.name
+        value = enum.value
+        return cw_ast.EnumValue(cw_ast.Name(name, cw_ast.Param),
+                                value)
 
     def translate_Struct(self, struct):
         name = struct.name

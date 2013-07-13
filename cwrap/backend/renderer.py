@@ -612,6 +612,14 @@ class ASTRenderer(object):
         self.code.dedent()
 
         self.code.newline()
+
+    def visit_EnumValue(self, enum):
+        name = enum.name
+        value = enum.value
+        head = '%s = %s' % (name, value)
+        self.code.write_i(head)
+        self.code.newline()
+
     
     def visit_Property(self, prop):
         name = prop.name

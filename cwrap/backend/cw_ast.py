@@ -511,6 +511,19 @@ class Expr(stmt):
         assert_expr(value, 'value')
         self.value = value
 
+class EnumValue(stmt):
+    """ An expression node. Inherits stmt.
+
+    value : an expr node.
+
+    """
+    def init(self, name, value, islast=0):
+        assert_int(value, 'value')
+        self.value = value
+        assert_expr(name, 'name')
+        self.name = name.id
+        self.islast = islast
+
 
 class Pass(stmt):
     """ The pass statement. Inherits stmt. Singleton.
